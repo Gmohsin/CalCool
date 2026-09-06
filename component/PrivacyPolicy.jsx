@@ -5,7 +5,9 @@ export default function PrivacyPolicy({ id }) {
     <main id={id} className="min-h-screen text-slate-800 bg-white antialiased">
       <section className="max-w-4xl mx-auto px-6 py-16 shadow-xl my-10 rounded-2xl">
         <div className="max-w-none">
-          <h1 className="text-4xl font-bold text-indigo-600">Privacy Policy</h1>
+          <h1 className="text-4xl font-bold text-indigo-600">
+            CalCool Privacy Policy
+          </h1>
 
           <p className="text-slate-500 mt-2">
             <strong>Last updated:</strong> September 6, 2026
@@ -165,7 +167,7 @@ export default function PrivacyPolicy({ id }) {
             <Link href="#contact" className="font-bold text-indigo-600">
               contact{" "}
             </Link>
-            us at:
+            us:
           </p>
 
           <h2 className="text-2xl font-bold text-indigo-600 mt-10 mb-4">
