@@ -1,7 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import TopBar from "../component/TopBar";
-import "./globals.css";
 import Footer from "@/component/Footer";
+import GoTopButton from "@/component/GoTopButton";
+import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
       <body className="min-h-full flex flex-col">
         <TopBar />
         {children}
+        <GoTopButton />
         <Footer />
       </body>
     </html>

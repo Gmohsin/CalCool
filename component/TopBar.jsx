@@ -1,24 +1,70 @@
 "use client";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ROUTES } from "../app/routs";
 
 export default function TopBar() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 30);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <div>
-      <nav className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center border-b border-slate-100">
-        <Link href={ROUTES.HOME} className="text-2xl font-bold text-indigo-600">
+    <header
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        scrolled ? "bg-white/75 backdrop-blur-md shadow-md" : "bg-white"
+      }`}
+    >
+      <nav
+        className={`max-w-7xl mx-auto px-6 flex justify-between items-center transition-all duration-300 ${
+          scrolled ? "py-2" : "py-4"
+        }`}
+      >
+        {/* Logo */}
+        <Link
+          href={ROUTES.HOME}
+          className={`font-bold text-indigo-600 transition-all duration-300 ${
+            scrolled ? "text-xl" : "text-2xl"
+          }`}
+        >
           CalCool
         </Link>
 
+        {/* Navigation */}
         <div className="flex gap-6 text-sm font-medium text-slate-600">
-          <Link href="#features" className="hover:text-indigo-600 transition">
+          <Link
+            href="#features"
+            className="hover:text-indigo-600 transition-colors"
+          >
             Features
+          </Link>
+
+          <Link
+            href="#contact"
+            className="hover:text-indigo-600 transition-colors"
+          >
+            Contact
+          </Link>
+
+          <Link
+            href="#privacy"
+            className="hover:text-indigo-600 transition-colors"
+          >
+            Privacy
           </Link>
 
           {/* Download Dropdown */}
           <div className="relative group">
-            <button className="hover:text-indigo-600 transition">
+            <button className="hover:text-indigo-600 transition-colors">
               Download
             </button>
 
@@ -41,16 +87,8 @@ export default function TopBar() {
               </div>
             </div>
           </div>
-
-          <Link href="#contact" className="hover:text-indigo-600 transition">
-            Contact
-          </Link>
-
-          <Link href="#privacy" className="hover:text-indigo-600 transition">
-            Privacy
-          </Link>
         </div>
       </nav>
-    </div>
+    </header>
   );
 }
